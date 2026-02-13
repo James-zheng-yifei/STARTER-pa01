@@ -9,6 +9,9 @@
 using namespace std;
 
 int main(int argv, char** argc){
+  cout << "aaaa" << endl;
+  set<card> a;
+  set<card> b;
   if(argv < 3){
     cout << "Please provide 2 file names" << endl;
     return 1;
@@ -25,16 +28,35 @@ int main(int argv, char** argc){
 
   //Read each file
   while (getline (cardFile1, line) && (line.length() > 0)){
-
+    a.push(card(line[0],line[2]));
   }
   cardFile1.close();
 
 
   while (getline (cardFile2, line) && (line.length() > 0)){
-
+    b.push(card(line[0],line[2]));
   }
   cardFile2.close();
   
-  
+  auto p = a.begin();
+  auto q = b.rbegin();
+  while(p != a.end() && q != b.end()) {
+  for(p = a.begin(); p != a.end(); p++) {
+      if(b.contains(q)) {
+        cout << "Alice picked matching card " << p << endl;
+        a.remove(p);
+        b.remove(q);
+        break;
+    }
+  }
+  for(q = b.begin(); q != b.end(); q++) {
+      if(a.contains(q)) {
+        cout << "Bob picked matching card " << q << endl;
+        a.remove(p);
+        b.remove(q);
+        break;
+    }
+  }
+}
   return 0;
 }
