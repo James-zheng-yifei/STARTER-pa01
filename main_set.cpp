@@ -38,10 +38,10 @@ int main(int argv, char** argc){
   }
   cardFile2.close();
   
+bool found = true;
+  while (found) {
 
-  while (true) {
-
-    bool found = false;
+    
 
 
     for (auto it = a.begin(); it != a.end(); ++it) {
@@ -50,7 +50,7 @@ int main(int argv, char** argc){
             cout << "Alice picked matching card " << *it;
 
             b.erase(*it);
-            a.erase(it);
+            a.erase(*it);
 
             found = true;
             break;
@@ -62,7 +62,7 @@ int main(int argv, char** argc){
     found = false;
 
 
-    for (auto it = b.rbegin(); it != b.rend(); --it) {
+    for (auto it = b.rbegin(); it != b.rend(); ++it) {
         if (a.find(*it) != a.end()) {
 
             cout << "Bob picked matching card " << *it;

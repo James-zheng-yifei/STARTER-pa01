@@ -40,40 +40,43 @@ int main(int argv, char** argc){
   
   bool found = true;
 
-while(found) {
+while (found) {
+
+    
+
+
+    for (auto it = a.begin(); it != a.end(); ++it) {
+        if (b.contains(*it)) {
+
+            cout << "Alice picked matching card " << *it;
+
+            b.remove(*it);
+            a.remove(*it);
+
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) break;
+
     found = false;
 
-    
-    for(auto p = a.begin(); p != a.end(); ) {
-        if(b.contains(*p)) {
-            cout << "Alice picked matching card " << *p;
-            card temp = *p;
-            p++;
-            a.remove(temp);
-            b.remove(temp);
+
+    for (auto it = b.rbegin(); it != b.rend(); --it) {
+        if (a.contains(*it)) {
+
+            cout << "Bob picked matching card " << *it;
+
+            a.remove(*it);
+            b.remove(*it);
+
             found = true;
             break;
-        }
-        else {
-            ++p;
         }
     }
 
-    
-    for(auto q = b.begin(); q != b.end(); ) {
-        if(a.contains(*q)) {
-            cout << "Bob picked matching card " << *q;
-            card temp = *q;
-            q++;
-            a.remove(temp);
-            b.remove(temp);
-            found = true;
-            break;
-        }
-        else {
-            ++q;
-        }
-    }
+    if (!found) break;
 }
 cout << endl;
 cout << "Alice's cards:\n";
