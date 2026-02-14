@@ -78,7 +78,7 @@ while (found) {
 
     if (!found) break;
 }
-cout << endl;
+
 cout << "Alice's cards:\n";
 for(auto it = a.begin(); it != a.end(); ++it) {
     cout << *it;
@@ -86,7 +86,7 @@ for(auto it = a.begin(); it != a.end(); ++it) {
 cout << endl;
 
 cout << "Bob's cards:\n";
-for(auto it = b.rbegin(); it != b.rend(); --it) {
+for(auto it = b.begin(); it != b.end(); ++it) {
     cout << *it;
 }
 
