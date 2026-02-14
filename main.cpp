@@ -78,7 +78,7 @@ while (found) {
 
     if (!found) break;
 }
-
+cout << endl;
 cout << "Alice's cards:\n";
 for(auto it = a.begin(); it != a.end(); ++it) {
     cout << *it;
