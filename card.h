@@ -19,7 +19,7 @@ class card {
             spades,
             hearts,
         };
-        card(char suit, char num);
+        card(char suit, string num);
         enum suits getSuit();
         int getNum();
     

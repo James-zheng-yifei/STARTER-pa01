@@ -27,14 +27,14 @@ int main(int argv, char** argc){
 
   //Read each file
   while (getline (cardFile1, line) && (line.length() > 0)){
-    a.insert(card(line[0], line[2]));
+    a.insert(card(line[0], line.substr(2)));
 
   }
   cardFile1.close();
 
 
   while (getline (cardFile2, line) && (line.length() > 0)){
-    b.insert(card(line[0], line[2]));
+    b.insert(card(line[0], line.substr(2)));
   }
   cardFile2.close();
   
@@ -62,7 +62,7 @@ int main(int argv, char** argc){
     found = false;
 
 
-    for (auto it = b.rbegin(); it != b.rend(); ++it) {
+    for (auto it = b.rbegin(); it != b.rend(); --it) {
         if (a.find(*it) != a.end()) {
 
             cout << "Bob picked matching card " << *it;
@@ -77,10 +77,12 @@ int main(int argv, char** argc){
 
     if (!found) break;
 }
+cout << endl;
 cout << "Alice's cards:\n";
 for(auto it = a.begin(); it != a.end(); ++it) {
     cout << *it;
 }
+cout << endl;
 
 cout << "Bob's cards:\n";
 for(auto it = b.begin(); it != b.end(); ++it) {

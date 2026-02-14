@@ -4,7 +4,7 @@
 
 #include "card.h"
 
-card::card(char suit, char num) {
+card::card(char suit, string num) {
     switch(suit) {
         case 'h':
             this->suit = hearts;
@@ -19,7 +19,9 @@ card::card(char suit, char num) {
             this->suit = diamonds;
             break;
     }
-    switch(num) {
+    
+
+    switch(num[0]) {
         case 'a':
             this->number = 1;
             break;
@@ -34,7 +36,7 @@ card::card(char suit, char num) {
             break;
 
         default:
-            this->number = num - '0';
+            this->number = stoi(num);
     }
 }
 
@@ -63,7 +65,7 @@ bool operator<(const card &a, const card &other) {
 
 
 bool operator>(const card &a, const card &other) {
-    return !(a < other);
+    return other < a;
 }
 
 
