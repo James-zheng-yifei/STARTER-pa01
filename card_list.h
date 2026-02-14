@@ -49,6 +49,7 @@ struct Node {
         iterator& operator--();      
         iterator operator--(int);
         card& operator*() ;
+        bool operator==(const iterator &other) const ;
         bool operator!=(const iterator &other) const ;
         
         friend class BST;

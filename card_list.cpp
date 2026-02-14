@@ -264,6 +264,9 @@ BST::iterator BST::rend() {
 bool  BST::iterator::operator!=(const iterator &other) const {
     return it != other.it;
 }
+bool  BST::iterator::operator==(const iterator &other) const {
+    return it == other.it;
+}
 
 void playGame(BST &a, BST &b) {
     bool found = true;

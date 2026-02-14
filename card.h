@@ -28,6 +28,7 @@ class card {
 };
 
 bool operator==(const card &a, const card &other);
+bool operator!=(const card &a, const card &other);
 bool operator<(const card &a, const card &other) ;
 bool operator>(const card &a, const card &other) ;
 ostream& operator<<(ostream& os, const card &other) ;

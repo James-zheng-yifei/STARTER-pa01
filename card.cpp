@@ -53,6 +53,10 @@ bool operator==(const card &a, const card &other) {
     return a.suit == other.suit && a.number == other.number;
 }
 
+bool operator!=(const card &a, const card &other) {
+    return a.suit != other.suit || a.number != other.number;
+}
+
 
 
 bool operator<(const card &a, const card &other) {
