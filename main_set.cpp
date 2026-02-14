@@ -9,7 +9,6 @@
 using namespace std;
 
 int main(int argv, char** argc){
-  cout << "aaaa" << endl;
   set<card> a;
   set<card> b;
   if(argv < 3){
@@ -77,6 +76,15 @@ int main(int argv, char** argc){
     }
 
     if (!found) break;
+}
+cout << "Alice's cards:\n";
+for(auto it = a.begin(); it != a.end(); ++it) {
+    cout << *it;
+}
+
+cout << "Bob's cards:\n";
+for(auto it = b.begin(); it != b.end(); ++it) {
+    cout << *it;
 }
 
   return 0;

@@ -38,35 +38,52 @@ int main(int argv, char** argc){
   }
   cardFile2.close();
   
-  auto p = a.begin();
-  auto q = b.rbegin();
-  while(p != a.end() && q != b.end()) {
-  for(auto p = a.begin(); p != a.end(); ) {
-    if(b.contains(*p)) {
-        cout << "Alice picked matching card " << *p;
-        card temp = *p;
-        p++;
-        a.remove(temp);
-        b.remove(temp);
-        break;
+  bool found = true;
+
+while(found) {
+    found = false;
+
+    
+    for(auto p = a.begin(); p != a.end(); ) {
+        if(b.contains(*p)) {
+            cout << "Alice picked matching card " << *p << endl;
+            card temp = *p;
+            p++;
+            a.remove(temp);
+            b.remove(temp);
+            found = true;
+            break;
+        }
+        else {
+            ++p;
+        }
     }
-    else {
-        ++p;
+
+    
+    for(auto q = b.begin(); q != b.end(); ) {
+        if(a.contains(*q)) {
+            cout << "Bob picked matching card " << *q << endl;
+            card temp = *q;
+            q++;
+            a.remove(temp);
+            b.remove(temp);
+            found = true;
+            break;
+        }
+        else {
+            ++q;
+        }
     }
 }
-  for(q = b.begin(); q != b.end(); ) {
-      if(a.contains(*q)) {
-        cout << "Bob picked matching card " << *q;
-        card temp = *q;
-        q++;
-        a.remove(temp);
-        b.remove(temp);
-        break;
-    }
-    else {
-      ++q;
-    }
-  }
+cout << "Alice's cards:\n";
+for(auto it = a.begin(); it != a.end(); ++it) {
+    cout << *it;
 }
+
+cout << "Bob's cards:\n";
+for(auto it = b.begin(); it != b.end(); ++it) {
+    cout << *it;
+}
+
   return 0;
 }
