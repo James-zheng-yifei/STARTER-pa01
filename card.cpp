@@ -34,7 +34,7 @@ card::card(char suit, char num) {
             break;
 
         default:
-            this->number = int(num);
+            this->number = num - '0';
     }
 }
 
@@ -54,9 +54,9 @@ bool operator==(const card &a, const card &other) {
 
 
 bool operator<(const card &a, const card &other) {
-    if(a.number == other.number) {
+    if (a.suit != other.suit)
         return a.suit < other.suit;
-    }
+
     return a.number < other.number;
 }
 
