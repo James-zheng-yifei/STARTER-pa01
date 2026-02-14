@@ -38,57 +38,7 @@ int main(int argv, char** argc){
   }
   cardFile2.close();
   
-  bool found = true;
-
-while (found) {
-
-    
-
-
-    for (auto it = a.begin(); it != a.end(); ++it) {
-        if (b.contains(*it)) {
-
-            cout << "Alice picked matching card " << *it;
-
-            b.remove(*it);
-            a.remove(*it);
-
-            found = true;
-            break;
-        }
-    }
-
-    if (!found) break;
-
-    found = false;
-
-
-    for (auto it = b.rbegin(); it != b.rend(); --it) {
-        if (a.contains(*it)) {
-
-            cout << "Bob picked matching card " << *it;
-
-            a.remove(*it);
-            b.remove(*it);
-
-            found = true;
-            break;
-        }
-    }
-
-    if (!found) break;
-}
-cout << endl;
-cout << "Alice's cards:\n";
-for(auto it = a.begin(); it != a.end(); ++it) {
-    cout << *it;
-}
-cout << endl;
-
-cout << "Bob's cards:\n";
-for(auto it = b.begin(); it != b.end(); ++it) {
-    cout << *it;
-}
+playGame(a, b);
 
   return 0;
 }

@@ -57,105 +57,7 @@ bool BST::insert(card value, Node* n) {
     }
 }
 
-// print tree data pre-order
-/*void BST::printPreOrder() const {
-    if (root) {
-        printPreOrder(root);
-    }
-}
 
-// recursive helper for printPreOrder()
-void BST::printPreOrder(Node *n) const {
-    if(!n) return;
-
-    cout << n->info;
-
-    if (n->left) {
-        cout << " ";
-        printPreOrder(n->left);
-    }
-    if (n->right) {
-        cout << " ";
-        printPreOrder(n->right);
-    }
-}
-
-// print tree data in-order, with helper
-void BST::printInOrder() const {
-    printInOrder(root);
-}
-void BST::printInOrder(Node *n) const {
-    if (!n) {
-        return;
-    }
-    // Print left subtree
-    if (n->left) {
-        printInOrder(n->left);
-        cout << " ";
-    }
-    
-    // Print current node
-    cout << n->info;
-    
-    // Print right subtree
-    if (n->right) {
-        cout << " ";
-        printInOrder(n->right);
-    }
-}
-
-// prints tree data post-order, with helper
-void BST::printPostOrder() const {
-    if(root)
-    printPostOrder(root);
-}
-
-void BST::printPostOrder(Node *n) const {
-    if(!n) return;
-    
-    // Print left subtree
-    if (n->left) {
-        printPostOrder(n->left);
-        cout << " ";
-    }
-    
-    // Print right subtree
-    if (n->right) {
-        printPostOrder(n->right);
-        cout << " ";
-    }
-    
-    // Print current node
-    cout << n->info;
-}*/
-
-/*int BST::sum() const {
-    return sum(root); 
-}
-
-// recursive helper for sum
-int BST::sum(Node *n) const {
-    if(!n) return 0;
-    return n->info + sum(n->left) + sum(n->right);
-}
-
-// return count of values
-int BST::count() const {
-    return count(root);
-}
-
-// recursive helper for count
-int BST::count(Node *n) const {
-    if (!n) return 0;
-    return 1 + count(n->left) + count(n->right);
-}*/
-
-// IMPLEMENT THIS FIRST: returns the node for a given value or NULL if none exists
-// Parameters:
-// int value: the value to be found
-// Node* n: the node to start with (for a recursive call)
-// Whenever you call this method from somewhere else, pass it
-// the root node as "n"
 BST::Node* BST::getNodeFor(card value, Node* n) const{
     if(!n) return nullptr;
     if(n->info == value) return n;
@@ -361,4 +263,58 @@ BST::iterator BST::rend() {
 }
 bool  BST::iterator::operator!=(const iterator &other) const {
     return it != other.it;
+}
+
+void playGame(BST &a, BST &b) {
+    bool found = true;
+
+    while (found) {
+
+    
+
+
+    for (auto it = a.begin(); it != a.end(); ++it) {
+        if (b.contains(*it)) {
+
+            cout << "Alice picked matching card " << *it;
+
+            b.remove(*it);
+            a.remove(*it);
+
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) break;
+
+    found = false;
+
+
+    for (auto it = b.rbegin(); it != b.rend(); --it) {
+        if (a.contains(*it)) {
+
+            cout << "Bob picked matching card " << *it;
+
+            a.remove(*it);
+            b.remove(*it);
+
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) break;
+}
+cout << endl;
+cout << "Alice's cards:\n";
+for(auto it = a.begin(); it != a.end(); ++it) {
+    cout << *it;
+}
+cout << endl;
+
+cout << "Bob's cards:\n";
+for(auto it = b.begin(); it != b.end(); ++it) {
+    cout << *it;
+}
 }

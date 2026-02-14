@@ -35,6 +35,7 @@ struct Node {
     int getPredecessor(card value) const;       // returns the predecessor value of the given value or 0 if there is none
     int getSuccessor(card value) const;         // returns the successor value of the given value or 0 if there is none
     bool remove(card value);                    // deletes the Node containing the given value from the tree
+    
 
 
     class iterator {
@@ -80,6 +81,7 @@ struct Node {
     Node* getSuccessorNode(card value) const;   // returns the Node containing the successor of the given value
     Node* getPredecessorNode(card value) const; // returns the Node containing the predecessor of the given value 
 };
+void playGame(BST &a, BST &b);
 
 
 
