@@ -298,8 +298,15 @@ bool BST::remove(card value){
     
 }
 
-void BST :: iterator :: operator--() {
+BST::iterator& BST::iterator::operator--() {
     it = he->getPredecessorNode(it->info);
+    return *this;
+}
+
+BST::iterator BST::iterator::operator--(int) {
+    iterator temp = *this;
+    --(*this);
+    return temp;
 }
 
 
@@ -307,8 +314,15 @@ void BST :: iterator :: operator--() {
 
 
 
-void BST :: iterator :: operator++() {
+BST::iterator BST::iterator::operator++(int) {
+    iterator temp = *this;   
+    ++(*this);               
+    return temp;             
+}
+
+BST::iterator& BST::iterator::operator++() {
     it = he->getSuccessorNode(it->info);
+    return *this;
 }
 
 
@@ -322,10 +336,11 @@ card& BST :: iterator :: operator*()
 BST::iterator::iterator(Node* node, BST* bst) : it(node), he(bst){}
 
 BST::iterator BST::begin() {
-    if(!root) return iterator(NULL, this);
+    if(!root) return iterator(nullptr, this);
+
     Node* curr = root;
-    while(curr && curr->right) {
-        curr = curr->right;
+    while(curr->left) {
+        curr = curr->left;
     }
     return iterator(curr, this);
 }
@@ -333,16 +348,17 @@ BST::iterator BST::end() {
     return iterator(nullptr, this);
 }
 BST::iterator BST::rbegin() {
-    if(!root) return iterator(NULL, this);
+    if(!root) return iterator(nullptr, this);
+
     Node* curr = root;
-    while(curr && curr->left) {
-        curr = curr->left;
+    while(curr->right) {
+        curr = curr->right;
     }
     return iterator(curr, this);
 }
 BST::iterator BST::rend() {
     return iterator(NULL, this);
 }
-bool operator!=(const BST::iterator &a, const BST::iterator &b) {
-    return !(a.info == b.info);
+bool  BST::iterator::operator!=(const iterator &other) const {
+    return it != other.it;
 }

@@ -41,20 +41,30 @@ int main(int argv, char** argc){
   auto p = a.begin();
   auto q = b.rbegin();
   while(p != a.end() && q != b.end()) {
-  for(p = a.begin(); p != a.end(); p++) {
-      if(b.contains(q)) {
-        cout << "Alice picked matching card " << p << endl;
-        a.remove(p);
-        b.remove(q);
+  for(auto p = a.begin(); p != a.end(); ) {
+    if(b.contains(*p)) {
+        cout << "Alice picked matching card " << *p;
+        card temp = *p;
+        p++;
+        a.remove(temp);
+        b.remove(temp);
         break;
     }
-  }
-  for(q = b.begin(); q != b.end(); q++) {
-      if(a.contains(q)) {
-        cout << "Bob picked matching card " << q << endl;
-        a.remove(p);
-        b.remove(q);
+    else {
+        ++p;
+    }
+}
+  for(q = b.begin(); q != b.end(); ) {
+      if(a.contains(*q)) {
+        cout << "Bob picked matching card " << *q;
+        card temp = *q;
+        q++;
+        a.remove(temp);
+        b.remove(temp);
         break;
+    }
+    else {
+      ++q;
     }
   }
 }

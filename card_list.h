@@ -38,12 +38,17 @@ struct Node {
 
 
     class iterator {
-        iterator(Node* node, BST* bst);
+    private:
         Node* it;
         BST* he;
-        void operator++();
-        void operator--() ;
+    public:
+        iterator(Node* node, BST* bst);
+        iterator operator++(int);
+        iterator& operator++();
+        iterator& operator--();      
+        iterator operator--(int);
         card& operator*() ;
+        bool operator!=(const iterator &other) const ;
         
         friend class BST;
     };
@@ -75,7 +80,7 @@ struct Node {
     Node* getSuccessorNode(card value) const;   // returns the Node containing the successor of the given value
     Node* getPredecessorNode(card value) const; // returns the Node containing the predecessor of the given value 
 };
-bool operator!=(const BST::iterator &a, const BST::iterator &b) ;
+
 
 
 
